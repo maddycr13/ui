@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <!-- scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+    <script src="http://marionettejs.com/downloads/backbone.marionette.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="index.js"></script>
+    <!-- style sheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.7/sass.min.js">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <!-- templates -->
+    <script id="layout-template" type="text/html">
+        <div class="container">
+            <div class="header"></div>
+            <br>
+            <div class="content"></div>
+        </div>
+    </script>
+    <script id="header-template" type="text/html">
+        <div class="col-md-12 col-sm-12 col-xs-12 main-header">
+            <div class="col-md-9 col-sm-9 col-xs-9 main-leftheader">
+                <h3 class="text-muted">Sample Polling</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#results">Results</a></li>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <script id="home-template" type="text/html">
+        <div class="col-md-12 col-sm-12 col-xs-12 content-div">
+            <div>
+                <p>
+                    <%-question%>
+                </p>
+                <br>
+                <br>
+                <select class="dropdown dropdown-div" id="rate-selector">
+                    <% _(options).each(function(option) { %>
+                        <option value="<%= option.id %>">
+                            <%= option.text %>
+                        </option>
+                        <% }); %>
+                </select>
+                <div>
+                    <a href="#results">
+                        <button class="btn btn-default dropdown-toggle dropdownbtn" id="vote">vote</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="results-template" type="text/html">
+        <div class="question-text">
+            <p>
+                <%-question%>
+            </p>
+            <br>
+            <p>
+                <%-selected.text%>
+                    <%-answer[selected.id]%>
+            </p>
+       </div>
+        <div id="chart-div"></div> 
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
